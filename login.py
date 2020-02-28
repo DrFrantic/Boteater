@@ -5,7 +5,7 @@ client = Boteater(my_token='EOGPholj0VT5bBVIVd7a.EmShJC1ehpONJdLBwzAq6G.UfDZWv8f
 clientMid = client.profile.mid
 
 print(client.getProductV2Sticker("14073"))
-print(client.getProductSticker("14073"))
+print(client.getProductSticker(14073))
 
 def my_worker(op):
     if op.type in [25, 26]:
