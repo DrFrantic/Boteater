@@ -4,6 +4,8 @@ from function import *
 client = Boteater(my_app="ios_ipad")
 clientMid = client.profile.mid
 
+print(client.getProductV2Sticker("14073"))
+
 def my_worker(op):
     if op.type in [25, 26]:
         msg = op.message
