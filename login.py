@@ -1,10 +1,11 @@
 from function import *
 
 #client = Boteater(my_token='token_here',my_app="ios_ipad")
-client = Boteater(my_app="ios_ipad")
+client = Boteater(my_token='EOGPholj0VT5bBVIVd7a.EmShJC1ehpONJdLBwzAq6G.UfDZWv8flAYCLtavxHTqPakB5u+8ZG292VbNZGKA3oY=',my_app="ios_ipad")
 clientMid = client.profile.mid
 
 print(client.getProductV2Sticker("14073"))
+print(client.getProductSticker("14073"))
 
 def my_worker(op):
     if op.type in [25, 26]:
