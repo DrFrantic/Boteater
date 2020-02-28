@@ -201,9 +201,9 @@ class Boteater:
             data = open(path, 'rb').read()
             params = {
                 'oid': 'reqseq',
-                'reqseq': '%s' % str(self.lastOP),
-                'tomid': '%s' % str(to),
-                'size': '%s' % str(len(data)),
+                'reqseq': str(self.lastOP),
+                'tomid': str(to),
+                'size': str(len(data)),
                 'range': len(data),
                 'type': 'image'
             }
@@ -275,7 +275,7 @@ class Boteater:
         bearer = self.liff.issueLiffView(liff_struct).accessToken
         headers = {'User-Agent': 'Mozilla/5.0 (Linux; Android 4.4.2; SM-N950N Build/NMF26X) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/30.0.0.0 Mobile Safari/537.36 (Mobile; afma-sdk-a-v12529005.12451000.1)',
                    'Content-Type': 'application/json',
-                   'Authorization': 'Bearer {}'.format(bearer)}
+                   'Authorization': f'Bearer {bearer}'}
         result = requests.post(self.liffServer, json={
                                "messages": [data]}, headers=headers)
         if result.status_code != 200:
@@ -317,7 +317,7 @@ class Boteater:
         bearer = self.liff.issueLiffView(liff_struct).accessToken
         headers = {'User-Agent': 'Mozilla/5.0 (Linux; Android 4.4.2; SM-N950N Build/NMF26X) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/30.0.0.0 Mobile Safari/537.36 (Mobile; afma-sdk-a-v12529005.12451000.1)',
                    'Content-Type': 'application/json',
-                   'Authorization': 'Bearer {}'.format(bearer)}
+                   'Authorization': f'Bearer {bearer}'}
         result = requests.post(self.liffServer, json={
                                "messages": [data]}, headers=headers)
         if result.status_code != 200:
@@ -338,7 +338,7 @@ class Boteater:
         bearer = self.liff.issueLiffView(liff_struct).accessToken
         headers = {'User-Agent': 'Mozilla/5.0 (Linux; Android 4.4.2; SM-N950N Build/NMF26X) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/30.0.0.0 Mobile Safari/537.36 (Mobile; afma-sdk-a-v12529005.12451000.1)',
                    'Content-Type': 'application/json',
-                   'Authorization': 'Bearer {}'.format(bearer)}
+                   'Authorization': f'Bearer {bearer}'}
         result = requests.post(self.liffServer, json={
                                "messages": [data]}, headers=headers)
         if result.status_code != 200:
@@ -359,7 +359,7 @@ class Boteater:
         bearer = self.liff.issueLiffView(liff_struct).accessToken
         headers = {'User-Agent': 'Mozilla/5.0 (Linux; Android 4.4.2; SM-N950N Build/NMF26X) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/30.0.0.0 Mobile Safari/537.36 (Mobile; afma-sdk-a-v12529005.12451000.1)',
                    'Content-Type': 'application/json',
-                   'Authorization': 'Bearer {}'.format(bearer)}
+                   'Authorization': f'Bearer {bearer}'}
         result = requests.post(self.liffServer, json={
                                "messages": [flex_data]}, headers=headers)
         if result.status_code != 200:
@@ -625,7 +625,7 @@ class Boteater:
 
     def sendMention(self, to, mid, text):
         mentiones = '{"S":"0","E":"3","M":'+json.dumps(mid)+'}'
-        text_ = '@x  {}'.format(text)
+        text_ = f'@x  {text}'
         return self.sendMessage(to, text_, contentMetadata={'MENTION':'{"MENTIONEES":['+mentiones+']}'}, contentType=0)
 
     def getMentiones(self, msg):
