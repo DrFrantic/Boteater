@@ -632,11 +632,7 @@ class Boteater:
         if 'MENTION' in msg.contentMetadata.keys()!= None:
             mention = ast.literal_eval(msg.contentMetadata['MENTION'])
             mentionees = mention['MENTIONEES']
-            mid_list = []
-            for mention in mentionees:
-                if mention["M"] not in mid_list:
-                    mid_list.append(mention["M"])
-            return mid_list
+            return [m["M"] for m in mentionees]
         else:
             return None
 
@@ -841,10 +837,7 @@ class Boteater:
         if status.online == False or status.mediaType != 1:
             self.sendMessage(to, "No group call found...")
             return
-        for num in range(count):
-            self.inviteIntoGroupCall(to, members)
-            time.sleep(0.3)
-            self.sendMessage(to, "Success invite call..")
+        for num in range(count):self.inviteIntoGroupCall(to, members)
         return
     
     ### SHOP FUNCTION ###
